@@ -16,10 +16,12 @@ function outer() {
   
   // Code Here
   
-  //Once you do that, invoke inner.
+ let inner = outer();
+
   
   //Code Here
   
+  inner();
   
   
   
@@ -50,8 +52,9 @@ function outer() {
   (HINT: You will need to pass in arguments to both function invocations)
   */
   
-    //Code Here
-  
+let callJake = callFriend('Jake');
+
+callJake('435-555-9248');
   
   
   
