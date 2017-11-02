@@ -73,16 +73,22 @@ callJake('435-555-9248');
   
   //Code Here
   
-  //Uncomment this once you make your function
-  //   var count = makeCounter();
-  //   count(); // 1
-  //   count(); // 2
-  //   count(); // 3
-  //   count(); // 4
+
+    // var count = makeCounter();
+    // count(); // 1
+    // count(); // 2
+    // count(); // 3
+    // count(); // 4
   
   
   
-  
+  const makeCounter = () => {
+    counter = 0;
+      return () => {
+        counter++;
+        return counter;
+      }
+  }
   
   
   
@@ -103,22 +109,22 @@ callJake('435-555-9248');
   http://stackoverflow.com/questions/17776940/javascript-module-pattern-with-example?answertab=votes#tab-top
   */
   
-  function counterFactory(value) {
+ var counterFactory = function(value){
   
-    // Code here.
-  
-  
-    return {
+   let counter = value;
 
+    return {
+      inc: function(){counter++; return counter;},
+      dec: function(){counter--; return counter;}
     }
   }
   
   
   counter = counterFactory(10);
-  // counter.inc() // 11
-  // counter.inc() // 12
-  // counter.inc() // 13
-  // counter.dec() // 12
+  counter.inc() // 11
+  counter.inc() // 12
+  counter.inc() // 13
+  counter.dec() // 12
   
   
   
@@ -143,12 +149,14 @@ callJake('435-555-9248');
   function motivation(firstname, lastname) {
   
     var welcomeText = 'You\'re doing awesome, keep it up ';
+    let firstName = firstname;
+    let lastName = lastname;
   
-    // code message function here.
+    const message = () => welcomeText + `${firstName} ${lastName}.`;
   
   
     //Uncommment this to return the value of your message function
-    //return message;
+    return message;
   
   }
   
@@ -186,7 +194,7 @@ callJake('435-555-9248');
     // Anything that is being returned is made public and can be invoked from
     // outside our lexical scope
     return {
-      // Code here.
+      publicMethod: () => privateMethod()
     };
   
   })();
@@ -205,7 +213,12 @@ callJake('435-555-9248');
     var secret = 143;
 
     return {
-      // Code here
+      addToSecret: function(sum){
+        secret += sum; 
+        return secret},
+      takeAwayFromSecret: (sub) => {
+        secret -= sub; 
+        return secret}
     }
   }
   
@@ -233,9 +246,10 @@ callJake('435-555-9248');
   
   function timeOutCounter() {
     for (var i = 0; i <= 5; i++) {
+      let temp = i
       setTimeout(function() {
-          console.log(i)
-      }, i * 1000)
+          console.log(temp)
+      }, temp * 1000)
     }
   }
   timeOutCounter();
